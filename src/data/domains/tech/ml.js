@@ -88,6 +88,15 @@ const mlDomain = {
             github: "https://github.com/meeraiyer",
             email: "meera@gdgc.dev",
         },
+        coLead: {
+            name: "Karan Mehta",
+            role: "Machine Learning Co-Lead",
+            avatar: "/team/karan.jpg",
+            bio: "ML engineer working on model deployment and MLOps.",
+            linkedin: "https://linkedin.com/in/karanmehta",
+            github: "https://github.com/karanmehta",
+            email: "karan@gdgc.dev",
+        },
         members: [
             {
                 name: "Aditya Sharma",

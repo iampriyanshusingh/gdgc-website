@@ -121,6 +121,15 @@ const webDevDomain = {
             github: "https://github.com/rahulverma",
             email: "rahul@gdgc.dev",
         },
+        coLead: {
+            name: "Priya Sharma",
+            role: "Web Development Co-Lead",
+            avatar: "/team/priya.jpg",
+            bio: "Frontend engineer and mentor, focusing on accessibility and performance.",
+            linkedin: "https://linkedin.com/in/priyasharma",
+            github: "https://github.com/priyasharma",
+            email: "priya@gdgc.dev",
+        },
         members: [
             {
                 name: "Sneha Patel",

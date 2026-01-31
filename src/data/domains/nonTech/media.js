@@ -79,6 +79,15 @@ const mediaDomain = {
             linkedin: "https://linkedin.com/in/aryankhanna",
             email: "aryan@gdgc.dev",
         },
+        coLead: {
+            name: "Mitali Das",
+            role: "Media Co-Lead",
+            avatar: "/team/mitali.jpg",
+            bio: "Videographer and editor working on event coverage and tutorials.",
+            linkedin: "https://linkedin.com/in/mitalidas",
+            github: "",
+            email: "mitali@gdgc.dev",
+        },
         members: [
             {
                 name: "Simran Kaur",

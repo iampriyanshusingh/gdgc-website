@@ -81,6 +81,15 @@ const eventsDomain = {
             linkedin: "https://linkedin.com/in/sanjaypatel",
             email: "sanjay@gdgc.dev",
         },
+        coLead: {
+            name: "Sohail Khan",
+            role: "Events Co-Lead",
+            avatar: "/team/sohail.jpg",
+            bio: "Events coordinator focusing on logistics and partnerships.",
+            linkedin: "https://linkedin.com/in/sohailkhan",
+            github: "",
+            email: "sohail@gdgc.dev",
+        },
         members: [
             {
                 name: "Nisha Agarwal",

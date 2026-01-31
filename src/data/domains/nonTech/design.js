@@ -89,6 +89,15 @@ const designDomain = {
             linkedin: "https://linkedin.com/in/tanyagupta",
             email: "tanya@gdgc.dev",
         },
+        coLead: {
+            name: "Divya Iyer",
+            role: "Design Co-Lead",
+            avatar: "/team/divya.jpg",
+            bio: "Product designer focused on UX systems and prototyping.",
+            linkedin: "https://linkedin.com/in/divyaiyer",
+            github: "",
+            email: "divya@gdgc.dev",
+        },
         members: [
             {
                 name: "Vivek Nair",

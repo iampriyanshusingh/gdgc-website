@@ -16,7 +16,7 @@ function DomainTeam({ team, domainColor }) {
         );
     }
 
-    const { lead, members } = team;
+    const { lead, coLead, members } = team;
 
     return (
         <section className="mb-12">
@@ -31,71 +31,126 @@ function DomainTeam({ team, domainColor }) {
                     <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
                         Domain Lead
                     </h3>
-                    <div
-                        className="flex flex-col md:flex-row items-center md:items-start gap-6 p-6 bg-card border-2 rounded-2xl text-center md:text-left"
-                        style={{ borderColor: domainColor }}
-                    >
+                    <div className="flex flex-col md:flex-row gap-6">
                         <div
-                            className="shrink-0 w-24 h-24 rounded-2xl flex items-center justify-center"
-                            style={{ backgroundColor: `${domainColor}20` }}
+                            className="flex-1 flex flex-col md:flex-row items-center md:items-start gap-6 p-6 bg-card border-2 rounded-2xl text-center md:text-left"
+                            style={{ borderColor: domainColor }}
                         >
-                            <span
-                                className="text-3xl font-bold"
-                                style={{ color: domainColor }}
+                            <div
+                                className="shrink-0 w-24 h-24 rounded-2xl flex items-center justify-center"
+                                style={{ backgroundColor: `${domainColor}20` }}
                             >
-                                {lead.name
-                                    .split(" ")
-                                    .map((n) => n[0])
-                                    .join("")}
-                            </span>
-                        </div>
-                        <div className="flex-1">
-                            <h4 className="text-xl font-bold text-foreground mb-1">
-                                {lead.name}
-                            </h4>
-                            <p
-                                className="text-sm font-medium mb-3"
-                                style={{ color: domainColor }}
-                            >
-                                {lead.role}
-                            </p>
-                            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                                {lead.bio}
-                            </p>
-                            <div className="flex gap-3 justify-center md:justify-start">
-                                {lead.linkedin && (
-                                    <a
-                                        href={lead.linkedin}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-[#0077B5] hover:bg-accent"
-                                        aria-label="LinkedIn"
-                                    >
-                                        <Linkedin className="w-5 h-5" />
-                                    </a>
-                                )}
-                                {lead.github && (
-                                    <a
-                                        href={lead.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-foreground hover:bg-accent"
-                                        aria-label="GitHub"
-                                    >
-                                        <Github className="w-5 h-5" />
-                                    </a>
-                                )}
-                                {lead.email && (
-                                    <a
-                                        href={`mailto:${lead.email}`}
-                                        className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-[#EA4335] hover:bg-accent"
-                                        aria-label="Email"
-                                    >
-                                        <Mail className="w-5 h-5" />
-                                    </a>
-                                )}
+                                <span
+                                    className="text-3xl font-bold"
+                                    style={{ color: domainColor }}
+                                >
+                                    {lead.name
+                                        .split(" ")
+                                        .map((n) => n[0])
+                                        .join("")}
+                                </span>
+                            </div>
+                            <div className="flex-1">
+                                <h4 className="text-xl font-bold text-foreground mb-1">
+                                    {lead.name}
+                                </h4>
+                                <p
+                                    className="text-sm font-medium mb-3"
+                                    style={{ color: domainColor }}
+                                >
+                                    {lead.role}
+                                </p>
+                                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                                    {lead.bio}
+                                </p>
+                                <div className="flex gap-3.justify-center md:justify-start">
+                                    {lead.linkedin && (
+                                        <a
+                                            href={lead.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-[#0077B5] hover:bg-accent"
+                                            aria-label="LinkedIn"
+                                        >
+                                            <Linkedin className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                    {lead.github && (
+                                        <a
+                                            href={lead.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-foreground hover:bg-accent"
+                                            aria-label="GitHub"
+                                        >
+                                            <Github className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                    {lead.email && (
+                                        <a
+                                            href={`mailto:${lead.email}`}
+                                            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-[#EA4335] hover:bg-accent"
+                                            aria-label="Email"
+                                        >
+                                            <Mail className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                         </div>
+
+                        {coLead && (
+                            <div
+                                className="flex-1 p-6 bg-card border-2 rounded-2xl text-center md:text-left"
+                                style={{ borderColor: domainColor }}
+                            >
+                                <h4 className="text-xl font-bold text-foreground mb-1">
+                                    {coLead.name}
+                                </h4>
+                                <p
+                                    className="text-sm font-medium mb-3"
+                                    style={{ color: domainColor }}
+                                >
+                                    {coLead.role}
+                                </p>
+                                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                                    {coLead.bio}
+                                </p>
+                                <div className="flex gap-3 justify-center md:justify-start">
+                                    {coLead.linkedin && (
+                                        <a
+                                            href={coLead.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-[#0077B5] hover:bg-accent"
+                                            aria-label="LinkedIn"
+                                        >
+                                            <Linkedin className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                    {coLead.github && (
+                                        <a
+                                            href={coLead.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-foreground hover:bg-accent"
+                                            aria-label="GitHub"
+                                        >
+                                            <Github className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                    {coLead.email && (
+                                        <a
+                                            href={`mailto:${coLead.email}`}
+                                            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground bg-secondary transition-colors hover:text-[#EA4335] hover:bg-accent"
+                                            aria-label="Email"
+                                        >
+                                            <Mail className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

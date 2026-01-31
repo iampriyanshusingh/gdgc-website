@@ -16,7 +16,7 @@ function DomainPageLayout({
     if (!activeDomain) {
         return (
             <div className="min-h-screen bg-background">
-                <div className="flex items-center justify-center min-h-[400px] text-muted-foreground">
+                <div className="flex items-center justify-center min-h-100 text-muted-foreground">
                     <p>Loading domain information...</p>
                 </div>
             </div>

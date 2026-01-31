@@ -89,6 +89,15 @@ const wtmDomain = {
             github: "https://github.com/ananyakrishnan",
             email: "ananya@gdgc.dev",
         },
+        coLead: {
+            name: "Anand Patel",
+            role: "WTM Co-Lead",
+            avatar: "/team/anand.jpg",
+            bio: "Community organizer and developer advocate focused on outreach.",
+            linkedin: "https://linkedin.com/in/anandpatel",
+            github: "https://github.com/anandpatel",
+            email: "anand@gdgc.dev",
+        },
         members: [
             {
                 name: "Divya Menon",

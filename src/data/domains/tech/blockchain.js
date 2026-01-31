@@ -89,6 +89,15 @@ const blockchainDomain = {
             github: "https://github.com/karanmalhotra",
             email: "karan@gdgc.dev",
         },
+        coLead: {
+            name: "Nisha Kapoor",
+            role: "Blockchain Co-Lead",
+            avatar: "/team/nisha.jpg",
+            bio: "Blockchain developer with a focus on smart contracts and security.",
+            linkedin: "https://linkedin.com/in/nishakapoor",
+            github: "https://github.com/nishakapoor",
+            email: "nisha@gdgc.dev",
+        },
         members: [
             {
                 name: "Shruti Kapoor",

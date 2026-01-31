@@ -80,6 +80,15 @@ const socialMediaDomain = {
             linkedin: "https://linkedin.com/in/priyankaroy",
             email: "priyanka@gdgc.dev",
         },
+        coLead: {
+            name: "Rhea Gupta",
+            role: "Social Media Co-Lead",
+            avatar: "/team/rhea.jpg",
+            bio: "Content strategist and community manager focused on growth.",
+            linkedin: "https://linkedin.com/in/rheagupta",
+            github: "",
+            email: "rhea@gdgc.dev",
+        },
         members: [
             {
                 name: "Ankit Verma",

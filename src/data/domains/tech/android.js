@@ -7,11 +7,7 @@ const androidDomain = {
     color: "#34A853",
     description:
         "Create powerful Android applications using Kotlin and modern Android development practices.",
-    skills: [
-        "Kotlin Programming",
-        "Android SDK",
-        "Jetpack Compose",
-    ],
+    skills: ["Kotlin Programming", "Android SDK", "Jetpack Compose"],
     tools: [
         { name: "Android Studio", icon: "🤖" },
         { name: "Kotlin", icon: "🅺" },
@@ -81,6 +77,15 @@ const androidDomain = {
             linkedin: "https://linkedin.com/in/vikramjoshi",
             github: "https://github.com/vikramjoshi",
             email: "vikram@gdgc.dev",
+        },
+        coLead: {
+            name: "Asha Rao",
+            role: "Android Development Co-Lead",
+            avatar: "/team/asha.jpg",
+            bio: "Kotlin enthusiast and UI/UX-focused Android engineer.",
+            linkedin: "https://linkedin.com/in/asharao",
+            github: "https://github.com/asharao",
+            email: "asha@gdgc.dev",
         },
         members: [
             {
