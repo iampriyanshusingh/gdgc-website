@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { DomainPageLayout } from "@/Components/Domains";
+import DomainPageLayout from "@/Components/Domains/DomainPageLayout.jsx";
 import {
     getTechDomainsList,
     getTechDomainById,
     getDefaultTechDomain,
-} from "../data/domains";
+} from "@/data/domains";
 
 function Tech() {
     const { teamParam } = useParams();

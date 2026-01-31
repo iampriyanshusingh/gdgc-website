@@ -1,10 +1,10 @@
 import React from "react";
-import DomainNavigation from "./DomainNavigation";
-import DomainInfo from "./DomainInfo";
-import DomainProjects from "./DomainProjects";
-import DomainBlogs from "./DomainBlogs";
-import DomainArticles from "./DomainArticles";
-import DomainTeam from "./DomainTeam";
+import DomainNavigation from "./DomainNavigation.jsx";
+import DomainInfo from "./DomainInfo.jsx";
+import DomainProjects from "./DomainProjects.jsx";
+import DomainBlogs from "./DomainBlogs.jsx";
+import DomainArticles from "./DomainArticles.jsx";
+import DomainTeam from "./DomainTeam.jsx";
 
 function DomainPageLayout({
     domains,
