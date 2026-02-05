@@ -23,6 +23,7 @@ export default function CardMainSection({
         md: "w-[80vw] h-[70vh]",
         lg: "w-[85vw] h-[80vh]",
         xl: "w-[90vw] h-[85vh]",
+        "2xl": "w-[95vw] h-[90vh]",
     };
 
     useEffect(() => {

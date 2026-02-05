@@ -26,12 +26,12 @@ function Advitya() {
             <div className="relative z-10" style={{ marginTop: '-100vh' }}>
                 {/* Space paralax background */}
                 <div style={{ height: '100vh' }} /> 
-                <CardMainSection bgColor="#FDFBD4" cardSize="xl">
+                <CardMainSection bgColor="transparent" cardSize="2xl">
                     <AboutCard />
                     <ChoosePathCard />
                 </CardMainSection>
             </div>
-        </>
+        </> 
     );
 }
 

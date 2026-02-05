@@ -10,22 +10,19 @@ const ParallaxBackground = () => {
     const colosseum = useTransform(x, [0, 0.5], [0, 300]);
     const greatwall = useTransform(x, [0, 0.5], [0, 250]);
 
-    // Scroll-based shrink and warp effect
-    const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.85]);
-    const rotateX = useTransform(scrollYProgress, [0, 0.2], [0, 10]);
-    const yOffset = useTransform(scrollYProgress, [0, 0.2], [0, -30]);
-    const opacity = useTransform(scrollYProgress, [0.1, 0.25], [1, 0.4]);
+    // Scroll-based shrink effect
+    // might use these in future
+    /*
+    const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.75]);
+    const yOffset = useTransform(scrollYProgress, [0, 0.3], [0, 50]);
+    */
 
     return (
-        <div className='sticky top-0 h-screen w-full z-0' style={{ perspective: '1000px' }}>
+        <div className='sticky top-0 h-screen w-full z-0'>
             <motion.div
                 className='relative h-screen overflow-y-hidden bg-[#fdfbd4] overflow-x-hidden'
                 style={{
-                    scale,
-                    rotateX,
-                    y: yOffset,
-                    opacity,
-                    transformOrigin: 'center top',
+                    transformOrigin: 'center center',
                 }}
             >
                 {/* Olympic Rings */}
