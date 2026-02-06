@@ -75,7 +75,6 @@ export function GlobalNavbar() {
               exit={{ opacity: 0, height: 0 }}
               className="rounded-none lg:rounded-full absolute left-0 right-0 top-full z-50 lg:static lg:rounded-full overflow-hidden"
               style={{
-                border: '2px ',
                 background: '#f7f6e4',
                 backgroundColor: '#faf8e0',
                 backdropFilter: 'blur(6px)',
@@ -115,12 +114,13 @@ export function GlobalNavbar() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-20 right-4 rounded-2xl"
+              className="fixed top-20 right-4 rounded-2xl z-[999]"
               style={{
                 background: '#faf8e0',
                 backdropFilter: 'blur(6px)',
                 WebkitBackdropFilter: 'blur(6px)',
                 boxShadow: '0 0 15px rgba(21, 21, 21, 0.6), 0 0 30px rgba(32, 18, 18, 0.4)',
+                border: 'none',
               }}
             >
               <ul className="flex flex-col gap-1 p-4">

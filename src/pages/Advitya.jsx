@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GlobalNavbar } from "@/Advitya26Components/Navbar";
 import ParallaxBackground from "@/Advitya26Components/ParallaxBackground";
+import MobileParallaxBackground from "@/Advitya26Components/MobileParallaxBackground";
 import CardMainSection from "@/Advitya26Components/CardAnimation/CardMainSection";
 import AboutCard from "@/Advitya26Components/AboutCard";
 import ChoosePathCard from "@/Advitya26Components/ChoosePathCard";
@@ -9,12 +10,23 @@ import Test from "@/Advitya26Components/Test";
 import "@/Advitya26Components/AdvityaMain.css";
 
 function Advitya() {
+    const [isMobile, setIsMobile] = useState(false);
+
     useEffect(() => {
         const root = document.documentElement;
         root.classList.add("advitya-page");
 
+        // Check if mobile on mount and on resize
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
         return () => {
             root.classList.remove("advitya-page");
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -23,7 +35,7 @@ function Advitya() {
             <div className="fixed top-0 left-0 w-full h-[10vh] z-50">
                 <GlobalNavbar />
             </div>
-            <ParallaxBackground />
+            {isMobile ? <MobileParallaxBackground /> : <ParallaxBackground />}
             
             <div className="relative z-10" style={{ marginTop: "-100vh" }}>
                 {/* Space paralax background */}
