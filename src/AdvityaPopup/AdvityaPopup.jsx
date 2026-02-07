@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./AdvityaPopup.css";
 
-export default function AdvityaPopup({ onClose }) {
-
-  // 👉 set your event date here
-  const targetDate = new Date("2026-02-27T00:00:00");
+export default function AdvityaPopup({
+  onClose,
+  eventDate = "2026-02-27T00:00:00",
+  eventName = "ADVITYA",
+  registerLink = "https://your-registration-link.com"
+}) {
+  const targetDate = new Date(eventDate);
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -14,20 +17,13 @@ export default function AdvityaPopup({ onClose }) {
   });
 
   useEffect(() => {
-
     const timer = setInterval(() => {
-
       const now = new Date();
       const diff = targetDate - now;
 
       if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         clearInterval(timer);
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0
-        });
         return;
       }
 
@@ -37,58 +33,97 @@ export default function AdvityaPopup({ onClose }) {
         minutes: Math.floor((diff / (1000 * 60)) % 60),
         seconds: Math.floor((diff / 1000) % 60)
       });
-
     }, 1000);
 
     return () => clearInterval(timer);
-
-  }, [targetDate]);
+  }, [eventDate]);
 
   return (
-
     <div className="popup-backdrop" onClick={onClose}>
+      <div className="speech-wrapper" onClick={(e) => e.stopPropagation()}>
 
-      <div
-        className="speech-wrapper"
-        onClick={(e) => e.stopPropagation()}
-      >
+        <div className="stamp-frame">
 
-        <button className="close-btn" onClick={onClose}>
-          ✕
-        </button>
+          {/* STAMP */}
+          <div className="stamp-border">
+            <button className="close-btn" onClick={onClose}>✕</button>
 
-        <div className="speech-card">
+            <div className="stamp-core">
+              <img src="/AdvityaPopup.png" alt="poster" />
+            </div>
+          </div>
 
-          <img
-            src="/AdvityaPopup.jpeg"
-            alt="poster"
-            className="poster"
-          />
-          <a href="/register" class="register-sticker">REGISTER NOW</a>
+          {/* COUNTDOWN */}
+          <div className="flex items-start justify-center w-full gap-4 count-down-main">
 
+            {/* DAYS */}
+            <div className="timer w-16">
+              <div className="bg-indigo-600 py-4 px-2 rounded-lg overflow-hidden">
+                <h3 className="countdown-element days font-Cormorant font-semibold text-2xl text-white text-center">
+                  {timeLeft.days}
+                </h3>
+              </div>
+              <p className="text-lg font-Cormorant font-medium text-gray-900 mt-1 text-center w-full">
+                days
+              </p>
+            </div>
 
-          <div className="coming">
-            COMING SOON
+            <h3 className="font-manrope font-semibold text-2xl text-gray-900">:</h3>
 
-            <div className="timer">
-              {timeLeft.days} DAYS |
-              {" "}
-              {timeLeft.hours} HOURS |
-              {" "}
-              {timeLeft.minutes} MIN |
-              {" "}
-              {timeLeft.seconds} SEC
+            {/* HOURS */}
+            <div className="timer w-16">
+              <div className="bg-indigo-600 py-4 px-2 rounded-lg overflow-hidden">
+                <h3 className="countdown-element hours font-Cormorant font-semibold text-2xl text-white text-center">
+                  {timeLeft.hours}
+                </h3>
+              </div>
+              <p className="text-lg font-Cormorant font-normal text-gray-900 mt-1 text-center w-full">
+                hours
+              </p>
+            </div>
+
+            <h3 className="font-manrope font-semibold text-2xl text-gray-900">:</h3>
+
+            {/* MINUTES */}
+            <div className="timer w-16">
+              <div className="bg-indigo-600 py-4 px-2 rounded-lg overflow-hidden">
+                <h3 className="countdown-element minutes font-Cormorant font-semibold text-2xl text-white text-center">
+                  {timeLeft.minutes}
+                </h3>
+              </div>
+              <p className="text-lg font-Cormorant font-normal text-gray-900 mt-1 text-center w-full">
+                minutes
+              </p>
+            </div>
+
+            <h3 className="font-manrope font-semibold text-2xl text-gray-900">:</h3>
+
+            {/* SECONDS */}
+            <div className="timer w-16">
+              <div className="bg-indigo-600 py-4 px-2 rounded-lg overflow-hidden">
+                <h3 className="countdown-element seconds font-Cormorant font-semibold text-2xl text-white text-center animate-countinsecond">
+                  {timeLeft.seconds}
+                </h3>
+              </div>
+              <p className="text-lg font-Cormorant font-normal text-gray-900 mt-1 text-center w-full">
+                seconds
+              </p>
             </div>
 
           </div>
 
+          {/* REGISTER BUTTON */}
+          <a
+            href={registerLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="register-btn"
+          >
+            REGISTER NOW
+          </a>
+
         </div>
-
-        <div className="speech-tail"></div>
-
       </div>
-
     </div>
-
   );
 }

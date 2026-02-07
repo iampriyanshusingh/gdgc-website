@@ -15,8 +15,8 @@ const ScrollLinkedSection = () => {
       name: "Anubhavi Jaiswal",
       role: "GDG Organizer",
       image: "/Panel_member1.jpeg",
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/Anubhavi-Jaiswal",
+      linkedin: "https://www.linkedin.com/in/anubhavi-jaiswal/",
       vision: "As the Organizer of GDGC VIT Bhopal, it has been rewarding to build a vibrant technical community rooted in curiosity and collaboration. Through workshops, hackathons, and hands-on initiatives, we’ve empowered students to connect theory with real-world technology and grow as developers and leaders."
     },
     {
@@ -47,8 +47,8 @@ const ScrollLinkedSection = () => {
       name: "Devanshi Sharma",
       role: "Non-Technical Co-lead",
       image: "/Panel_member5.jpeg",
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/devanshi2208",
+      linkedin: " https://www.linkedin.com/in/devanshi-sharma-183461324",
       vision: "I started my journey in this club as an Event Team Member and today proudly serve as the Non-Tech Co-Lead. Being academically driven, slightly introverted, and highly ambitious, I believe in growing through consistency, dedication, and meaningful contribution"
     }
   ];
