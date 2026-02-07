@@ -14,11 +14,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Size presets
 const SIZE_CLASSES = {
-    sm: "h-[60vh]",
-    md: "h-[70vh]",
-    lg: "h-[80vh]",
-    xl: "h-[85vh]",
-    "2xl": "h-[90vh]",
+    sm: "h-[70vh]",
+    md: "h-[80vh]",
+    lg: "h-[85vh]",
+    xl: "h-[90vh]",
+    "2xl": "h-[95vh]",
 };
 
 const SIZE_VALUES = {
@@ -49,6 +49,7 @@ export default function CardMainSectionDesktop({
     const cardRefs = useRef([]);
     const lastCardInnerRef = useRef(null);
     const [contentOpacity, setContentOpacity] = useState(0);
+    const [dynamicHeight, setDynamicHeight] = useState("400vh"); // Initial estimate
     const childArray = Children.toArray(children);
 
     const cardWidthVw = getCardWidthVw(cardSize);
@@ -91,9 +92,27 @@ export default function CardMainSectionDesktop({
 
         // Create context for cleanup
         const ctx = gsap.context(() => {
-            const scrollWidth = getScrollWidth();
-            const scaleDistance = scaleLastCard ? window.innerHeight * 2 : 0;
+            // Get the last card's position to calculate scroll to center it
+            const lastCardEl = cardRefs.current[childArray.length - 1];
+            if (!lastCardEl) return;
+
+            // Calculate how far to scroll horizontally to CENTER the last card
+            const lastCardRect = lastCardEl.getBoundingClientRect();
+            const trackRect = track.getBoundingClientRect();
+            const viewportCenter = window.innerWidth / 2;
+
+            // Position of last card center relative to track start
+            const lastCardCenterInTrack = (lastCardRect.left - trackRect.left) + (lastCardRect.width / 2);
+
+            // Scroll needed to bring last card center to viewport center
+            const scrollToCenter = lastCardCenterInTrack - viewportCenter;
+            const scrollWidth = Math.max(0, scrollToCenter);
+
+            const scaleDistance = scaleLastCard ? window.innerHeight * 1.5 : 0;
             const totalDistance = scrollWidth + scaleDistance;
+
+            // Update container height based on actual scroll width
+            setDynamicHeight(`${window.innerHeight + totalDistance}px`);
 
             if (totalDistance <= 0) return;
 
@@ -119,7 +138,7 @@ export default function CardMainSectionDesktop({
             const phase1Duration = scrollWidth / totalDistance; // Horizontal scroll phase
             const phase2Duration = scaleDistance / totalDistance; // Scale phase
 
-            // PHASE 1: Horizontal scroll only (last card stays small but comes into view)
+            // PHASE 1: Horizontal scroll until last card is CENTERED
             mainTL.to(
                 track,
                 {
@@ -130,7 +149,7 @@ export default function CardMainSectionDesktop({
                 0,
             );
 
-            // PHASE 2: Scale last card from small to full screen (after horizontal scroll completes)
+            // PHASE 2: Scale last card from small to full screen (after it's centered)
             if (scaleLastCard && lastCard) {
                 mainTL.to(
                     lastCard,
@@ -156,22 +175,21 @@ export default function CardMainSectionDesktop({
                 ); // Start after phase 1
             }
 
-            // Single ScrollTrigger
+            // Single ScrollTrigger with proper pinning
             ScrollTrigger.create({
                 trigger: container,
                 start: "top top",
                 end: () => `+=${totalDistance}`,
                 pin: section,
                 pinSpacing: false,
-                scrub: 0.5,
+                scrub: 0.8,
                 animation: mainTL,
                 invalidateOnRefresh: true,
                 onUpdate: (self) => {
                     const progress = self.progress;
 
-                    // Content opacity - starts revealing during phase 2 (after horizontal scroll)
+                    // Content opacity - starts revealing during phase 2 (after card is centered)
                     if (scaleLastCard) {
-                        // Phase 1 ends at phase1Duration of total progress
                         const phase2Start = phase1Duration;
                         if (progress >= phase2Start) {
                             // In phase 2 - reveal content
@@ -180,16 +198,15 @@ export default function CardMainSectionDesktop({
                             const opacityProgress = Math.min(
                                 1,
                                 phase2Progress * 2,
-                            ); // Reveal in first half of phase 2
+                            );
                             setContentOpacity(opacityProgress);
                         } else {
-                            // In phase 1 - content hidden
                             setContentOpacity(0);
                         }
                     }
 
                     // Scale non-last cards based on position
-                    const viewportCenter = window.innerWidth / 2;
+                    const vpCenter = window.innerWidth / 2;
                     cardRefs.current.forEach((card, index) => {
                         if (!card) return;
                         const isLast = index === childArray.length - 1;
@@ -197,9 +214,7 @@ export default function CardMainSectionDesktop({
                         if (!isLast) {
                             const rect = card.getBoundingClientRect();
                             const cardCenter = rect.left + rect.width / 2;
-                            const distance = Math.abs(
-                                viewportCenter - cardCenter,
-                            );
+                            const distance = Math.abs(vpCenter - cardCenter);
                             const maxDistance =
                                 window.innerWidth / 2 + rect.width / 2;
                             const proximity =
@@ -230,15 +245,12 @@ export default function CardMainSectionDesktop({
         lastCardInitialScale,
     ]);
 
-    // Calculate container height for scroll - horizontal scroll + scale phase
-    const scrollDistanceVw = getScrollDistanceVw();
-    const scalePhaseHeight = scaleLastCard ? 200 : 0; // vh for scaling animation
-    const containerHeight = `calc(100vh + ${scrollDistanceVw}vw + ${scalePhaseHeight}vh)`;
+    // Container height is now dynamically calculated in useEffect based on actual track width
 
     return (
         <div
             ref={containerRef}
-            style={{ height: containerHeight, position: "relative", zIndex: 2 }}
+            style={{ height: dynamicHeight, position: "relative", zIndex: 2 }}
         >
             <section
                 ref={sectionRef}
@@ -261,6 +273,8 @@ export default function CardMainSectionDesktop({
                                 ? cloneElement(child, { contentOpacity })
                                 : child;
 
+                        const isSecondToLast = index === childArray.length - 2;
+
                         return (
                             <div
                                 key={index}
@@ -269,6 +283,7 @@ export default function CardMainSectionDesktop({
                                 style={{
                                     width: `${cardWidthVw}vw`,
                                     transformOrigin: "center center",
+                                    marginRight: isSecondToLast ? "20vw" : undefined, // Extra spacing after LoadingTextScroller
                                 }}
                             >
                                 {scaleLastCard && isLastCard ? (

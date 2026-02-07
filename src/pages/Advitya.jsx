@@ -5,6 +5,7 @@ import MobileParallaxBackground from "@/Advitya26Components/MobileParallaxBackgr
 import CardMainSection from "@/Advitya26Components/CardAnimation/CardMainSection";
 import CardMainSectionDesktop from "@/Advitya26Components/CardAnimation/CardMainSectionDesktop";
 import AboutCard from "@/Advitya26Components/AboutCard";
+import LoadingTextScroller from "@/Advitya26Components/LoadingTextScroller";
 import ChoosePathCard from "@/Advitya26Components/ChoosePathCard";
 import Test from "@/Advitya26Components/Test";
 
@@ -66,6 +67,7 @@ function Advitya() {
                         direction="horizontal"
                     >
                         <AboutCard />
+                        <LoadingTextScroller />
                         <ChoosePathCard />
                     </CardMainSection>
                 ) : (
@@ -76,6 +78,7 @@ function Advitya() {
                         lastCardInitialScale={0.3}
                     >
                         <AboutCard />
+                        <LoadingTextScroller />
                         <ChoosePathCard />
                     </CardMainSectionDesktop>
                 )}
