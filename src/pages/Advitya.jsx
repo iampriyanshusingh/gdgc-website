@@ -9,6 +9,7 @@ import LoadingTextScroller from "@/Advitya26Components/LoadingTextScroller";
 import ChoosePathCard from "@/Advitya26Components/ChoosePathCardDir/ChoosePathCard";
 import ChoosePathCardMobile from "@/Advitya26Components/ChoosePathCardDir/ChoosePathCardMobile";
 import FAQ from "@/Advitya26Components/FAQ";
+import AdvityaGallery3D from "@/Advitya26Components/AdvityaGallery3D";
 
 import "@/Advitya26Components/AdvityaMain.css";
 
@@ -91,6 +92,15 @@ function Advitya() {
                     style={{ zIndex: 1 }}
                 >
                     <FAQ />
+                </section>
+
+                {/* Gallery Section - Horizontal scroll triggered by vertical scroll */}
+                <section
+                    id="gallery-section"
+                    className="relative w-full"
+                    style={{ zIndex: 1 }}
+                >
+                    <AdvityaGallery3D />
                 </section>
             </div>
         </>
