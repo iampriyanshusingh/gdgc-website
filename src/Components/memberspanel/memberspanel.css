@@ -10,9 +10,14 @@
 
 .panels-row {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.5rem;
+  flex-direction: row;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgb(136, 108, 4);
+  gap: 4.9rem;
   width: 100%;
 }
 
@@ -24,16 +29,18 @@
 }
 
 .vision-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 24px;
   padding: 3rem;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-top-color: rgb(255, 77, 0);
+  border-bottom-color: rgb(15, 101, 230);
+  border-radius: 16px;
+  height: clamp(280px, 50vh, 380px);
+  background: transparent;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: none;
   max-width: none;
   width: 100%;
-  height: clamp(320px, 60vh, 460px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border-top: 20px solid blue;
-  border-bottom: 20px solid blue;
 }
 
 .vision-title {
@@ -137,7 +144,7 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   color: black;
-  font-size: 4.5rem;
+  font-size: 2.5rem;
   text-align: center;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -147,7 +154,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 6.6rem;
   margin-bottom: 1rem;
 }
 
@@ -157,9 +164,9 @@
 }
 
 .wheel {
-  width: 70px;
+  width: 120px;
   height: auto;
-  animation: rotate 4s linear infinite;
+  animation: rotate 5s linear infinite;
 }
 
 @keyframes rotate {
@@ -178,18 +185,20 @@
 }
 
 .profiles-container {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 24px;
-  padding: 3rem;
+  padding: 0rem;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-top-color: #10b981;
+  border-bottom-color: #f59e0b;
+  border-radius: 16px;
   max-width: none;
   width: 100%;
-  height: clamp(320px, 60vh, 460px);
+  height: clamp(280px, 50vh, 380px);
   overflow-y: auto;
   overflow-x: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border-top: 20px solid rgb(255, 0, 0);
-  border-bottom: 20px solid rgb(255, 0, 0);
+  background: transparent;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: none;
 }
 
 .scroll-spacer-top,
