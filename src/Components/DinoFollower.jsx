@@ -81,7 +81,7 @@ const vh = document.documentElement.scrollHeight;
       ref={dinoRef}
       src="/olympicsImages/dino.gif"
       alt="dino"
-      className=" z-[9999] select-none pointer-events-none absolute w-15"
+      className=" z-9999 select-none pointer-events-none absolute w-15"
       style={{
           left: 0,
           top: 0,
