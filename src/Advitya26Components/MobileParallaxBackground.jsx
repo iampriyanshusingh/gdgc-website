@@ -79,7 +79,7 @@ const MobileParallaxBackground = ({ onRingsFadeStart = () => {} }) => {
                             <motion.img
                                 src="/greatwall-mobile.avif"
                                 alt="great wall"
-                                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[80vh] sm:h-[50vh] z-0 object-cover"
+                                className="absolute bottom-20 left-1/2 -translate-x-1/2 h-[80vh] sm:h-[50vh] z-0 object-cover"
                             />
                         </motion.div>
                     )}
