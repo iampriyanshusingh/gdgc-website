@@ -173,14 +173,14 @@ function HeroSectionMobile() {
                         <span className="inline-block text-[30px] font-extrabold text-[#4285F4]">
                             we are
                         </span>
-                        {/* <span className="inline-block text-[30px] font-black text-black">
+                        <span className="inline-block text-[30px] font-black text-black">
                             gdgc<span className="text-[#ff2d55]">.</span>
-                        </span> */}
+                        </span>
                         <div>
-                            <FlipWords 
+                            {/* <FlipWords 
                             words = {["GDGC", "Devs", "Creators", "Innovators"]}
                             className="text-[30px] lg:text-[35px] xl:text-[40px] font-black text-black"/>
-                            <span className="text-[#ff2d55] text-4xl lg:text-5xl xl:text-6xl font-extrabold">.</span>
+                            <span className="text-[#ff2d55] text-4xl lg:text-5xl xl:text-6xl font-extrabold">.</span> */}
                             </div>
                     </span>
                 </h1>

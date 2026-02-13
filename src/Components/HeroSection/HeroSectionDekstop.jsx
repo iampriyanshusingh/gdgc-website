@@ -130,43 +130,32 @@ export default function HeroSectionDesktop() {
       <div className="relative mx-auto grid min-h-0 max-w-7xl grid-rows-[1fr_auto] pt-8 pb-0 bottom-0">
         {/* Center content */}
         <div className="flex flex-col items-center justify-center">
-          <h1
+          <motion.h1
             className="z-10 mb-3 text-center leading-[0.9]"
             style={{
               fontFamily:
                 "Syne, system-ui, -apple-system, Segoe UI, Roboto, Arial",
             }}
+            // initial={{ opacity: 0 }}
+            animate={{ y:[0, -10, 0]}}
+            transition={{ duration: 2, repeat:Infinity, ease: "easeInOut" }}
           >
             <span className="inline-flex items-baseline gap-3 lg:gap-4 whitespace-nowrap">
               <span className="text-4xl lg:text-5xl xl:text-6xl font-extrabold [-webkit-text-stroke:1px_black] text-[#4285F4]">
                 we are
               </span>
-              {/* <span className="text-4xl lg:text-5xl xl:text-6xl font-black text-black">
+              <span className="text-4xl lg:text-5xl xl:text-6xl font-black text-black">
                 gdgc<span className="text-[#ff2d55]">.</span>
-              </span> */}
+              </span>
               <div>
-              <FlipWords 
+              {/* <FlipWords 
               words = {["GDGC", "Devs", "Creators", "Innovators"]}
               className="text-4xl lg:text-5xl xl:text-6xl font-black text-black"/>
-              <span className="text-[#ff2d55] text-4xl lg:text-5xl xl:text-6xl font-extrabold">.</span>
+              <span className="text-[#ff2d55] text-4xl lg:text-5xl xl:text-6xl font-extrabold">.</span> */}
               </div>
             </span>
-          </h1>
+          </motion.h1>
 
-          {/* <div className="flex w-full items-center justify-center">
-            <img
-              src={VitVectorImage}
-              alt="VIT Bhopal Illustration"
-              className="
-                pointer-events-none
-                w-[80%]
-                max-h-[60vh]
-                object-contain
-                xl:w-[85%]
-                2xl:w-full
-              "
-            />
-          </div> */}
         </div>
         <div className="flex flex-row w-full bottom-0 mx-auto relative">
           {/* location */}

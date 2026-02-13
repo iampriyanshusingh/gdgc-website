@@ -53,7 +53,7 @@ const GoogleOlympicsHeading = ({ show = false, className = '' }) => {
 
     // Shared text style with smooth CSS transitions for viewport changes
     const baseTextStyle = {
-        fontFamily: 'Syne, cursive',
+        fontFamily: 'Grenze Gotisch, Syne, cursive',
         letterSpacing: '0.01em',
         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 8px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3)',
         lineHeight: 1.1,
@@ -129,6 +129,7 @@ const GoogleOlympicsHeading = ({ show = false, className = '' }) => {
                         fontSize: 'clamp(1.5rem, 8vw, 6rem)',
                         color: '#030c0f',
                         fontWeight: 900,
+                        fontFamily: 'Pirata One, Grenze Gotisch, Syne, cursive',
                     }}
                 >
                     2.0
