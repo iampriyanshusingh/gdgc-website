@@ -141,13 +141,13 @@ const AsteriskIcon = ({ color }) => {
 };
 
 const FAQCard = ({ question, answer, iconColor }) => (
-  <div className="border border-white/100 rounded-lg p-3 md:p-6 flex items-center gap-4 md:gap-8 bg-transparent hover:bg-white/5 transition-colors w-full max-w-10xl" style={{ fontFamily: "'Poppins', sans-serif" }}>
+  <div className="border border-black/100 rounded-lg p-3 md:p-6 flex items-center gap-4 md:gap-8 bg-black/15 transition-colors w-full max-w-10xl" style={{ fontFamily: "'Arial Rounded MT Bold', Arial, sans-serif" }}>
     <div className="flex-shrink-0">
       <AsteriskIcon color={iconColor} />
     </div>
     <div>
-      <h3 className="text-white font-bold text-base md:text-xl mb-1 md:mb-2">{question}</h3>
-      <p className="text-white/90 text-xs md:text-base font-normal">{answer}</p>
+      <h3 className="text-black font-extrabold text-base md:text-xl mb-1 md:mb-2">{question}</h3>
+      <p className="text-black/90 text-xs md:text-base font-extrabold">{answer}</p>
     </div>
   </div>
 );
@@ -167,16 +167,25 @@ export default function FAQ() {
   };
 
   return (
-    <div className="w-screen min-h-screen bg-[#0a0a0a] relative flex flex-col isolate" style={{ fontFamily: "'Poppins', sans-serif" }}>
-      {/* Grid Background */}
+    <div
+      className="w-screen min-h-screen relative flex flex-col isolate"
+      style={{
+        fontFamily: "'Poppins', sans-serif",
+        minHeight: '100vh',
+        width: '100vw',
+        backgroundImage: "url('/FAQ_BG.png')",
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Blurred, dark-lighted overlay */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-10"
         style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(50,50,50,0.6) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(50,50,50,0.6) 1px, transparent 1px)
-          `,
-          backgroundSize: '180px 180px'
+          background: 'rgba(240, 219, 114, 0.45)',
+          backdropFilter: 'blur(1px)',
+          WebkitBackdropFilter: 'blur(1px)',
         }}
       />
 
@@ -184,16 +193,11 @@ export default function FAQ() {
       <div
         className="relative z-20 px-4 md:px-28 py-4 md:py-12 shrink-0"
         style={{
-          backgroundColor: '#0a0a0a',
-          backgroundImage: `
-            linear-gradient(to right, rgba(50,50,50,0.6) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(50,50,50,0.6) 1px, transparent 1px)
-          `,
-          backgroundSize: '180px 180px'
+          // Removed backgroundColor and grid background to let FAQ_BG show
         }}
       >
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-          <h1 className="text-white text-[40px] md:text-[100px] font-semibold mb-4 md:mb-0 tracking-tight">
+          <h1 className="text-black text-[40px] md:text-[100px] font-extrabold mb-4 md:mb-0 tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
             FAQs
           </h1>
 
@@ -205,7 +209,7 @@ export default function FAQ() {
                 onClick={() => handleTabClick(tab.id)}
                 className={`px-3 md:px-6 py-1.5 md:py-2.5 rounded-full text-xs md:text-[18px] font-medium transition-all duration-300 border whitespace-nowrap ${activeTab === tab.id
                   ? 'bg-white text-black border-white'
-                  : 'bg-transparent text-white border-white/50 hover:border-white'
+                    : 'bg-transparent text-black border-black/50 hover:border-black'
                   }`}
               >
                 {tab.label}
@@ -218,12 +222,14 @@ export default function FAQ() {
       {/* Content */}
       <div className="relative z-10 px-4 md:px-28 pt-2 pb-2 md:pb-4">
         <div className="space-y-2 md:space-y-4">
-          <h2 className="text-white text-lg md:text-2xl font-medium mb-3 md:mb-4 uppercase">
+          <h2 className="text-black text-lg md:text-2xl font-extrabold mb-3 md:mb-4 uppercase">
             {activeTab}
           </h2>
-          {faqData[activeTab].map((faq, index) => (
-            <FAQCard key={index} {...faq} />
-          ))}
+          <div className="space-y-2 md:space-y-4 text-black">
+            {faqData[activeTab].map((faq, index) => (
+              <FAQCard key={index} {...faq} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
