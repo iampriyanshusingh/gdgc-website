@@ -4,6 +4,9 @@ import gsap from "gsap";
 
 import * as gameIcons from "@/Advitya26Components/assets/gamesIcons/gameIcons";
 
+// ADD GAME IDs HERE TO REVEAL: e.g. [1, 2, 3]
+const REVEALED_GAME_IDS = [];
+
 const games = [
     {
         id: 1,
@@ -280,6 +283,7 @@ export default function ChoosePathCardMobile({ contentOpacity = 1 }) {
 
                 {games.map((game, index) => {
                     const gridPos = mobileGridPositions[index];
+                    const isRevealed = REVEALED_GAME_IDS.includes(game.id);
                     return (
                         <motion.div
                             key={game.id}
@@ -302,30 +306,42 @@ export default function ChoosePathCardMobile({ contentOpacity = 1 }) {
                                 stiffness: 250,
                             }}
                         >
-                            {/* Game circle with icon image */}
+                            {/* Game circle */}
                             <div
                                 ref={(el) => (circleRefs.current[index] = el)}
-                                className={`relative w-11 h-11 bg-linear-to-br from-[#f4e4c1] to-[#d4af37] border-2 border-[#654321] rounded-full flex items-center justify-center shadow-md transition-all duration-200 ${selectedGame === game.id ? "shadow-[0_0_15px_rgba(218,165,32,0.8)] scale-110" : ""}`}
+                                className={`relative w-11 h-11 bg-linear-to-br ${isRevealed ? "from-[#f4e4c1] to-[#d4af37]" : "from-[#5c4033] to-[#3b2716]"} border-2 border-[#654321] rounded-full flex items-center justify-center shadow-md transition-all duration-200 ${selectedGame === game.id ? (isRevealed ? "shadow-[0_0_15px_rgba(218,165,32,0.8)] scale-110" : "shadow-[0_0_15px_rgba(139,69,19,0.8)] scale-110") : ""}`}
                             >
-                                <div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full">
-                                    <img
-                                        src={game.icon}
-                                        alt={game.name}
-                                        className="w-full h-full object-fill filter sepia-[0.5] transition-all duration-300"
-                                        style={game.imgStyle}
-                                    />
-                                </div>
+                                {isRevealed ? (
+                                    <div className="w-full h-full flex items-center justify-center overflow-hidden rounded-full">
+                                        <img
+                                            src={game.icon}
+                                            alt={game.name}
+                                            className="w-full h-full object-fill filter sepia-[0.5] transition-all duration-300"
+                                            style={game.imgStyle}
+                                        />
+                                    </div>
+                                ) : (
+                                    <span className="text-lg select-none" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}>🔒</span>
+                                )}
                                 <div className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#8B0000] text-white border-2 border-[#654321] rounded-full flex items-center justify-center font-bold text-[7px] shadow-sm">
                                     {game.id}
                                 </div>
                             </div>
 
                             {/* Label */}
-                            <div className="mt-1 px-1.5 py-0.5 bg-[rgba(244,228,193,0.95)] border border-[#654321] rounded shadow-sm">
-                                <span className="font-serif font-bold text-[8px] text-[#3d2817] whitespace-nowrap">
-                                    {game.name}
-                                </span>
-                            </div>
+                            {isRevealed ? (
+                                <div className="mt-1 px-1.5 py-0.5 bg-[rgba(244,228,193,0.95)] border border-[#654321] rounded shadow-sm">
+                                    <span className="font-serif font-bold text-[8px] text-[#3d2817] whitespace-nowrap">
+                                        {game.name}
+                                    </span>
+                                </div>
+                            ) : (
+                                <div className="mt-1 px-1.5 py-0.5 bg-[rgba(92,64,51,0.9)] border border-[#654321] rounded shadow-sm">
+                                    <span className="font-serif font-bold text-[8px] text-[#f4e4c1] whitespace-nowrap">
+                                        🔒 Locked
+                                    </span>
+                                </div>
+                            )}
 
                             {/* Tooltip on tap */}
                             {selectedGame === game.id && (
@@ -339,21 +355,38 @@ export default function ChoosePathCardMobile({ contentOpacity = 1 }) {
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.12 }}
                                 >
-                                    <div className="bg-linear-to-br from-[#f5e6d3] to-[#e8d5b7] border-2 border-[#654321] rounded-lg p-2 shadow-xl">
-                                        <h3 className="font-serif text-[10px] font-bold text-[#3d2817] mb-0.5 pb-0.5 border-b border-[#8B4513] uppercase">
-                                            {game.name}
-                                        </h3>
-                                        <p className="font-serif text-[9px] leading-snug text-[#4a3728]">
-                                            {game.description}
-                                        </p>
-                                        <div className="mt-1.5 rounded-md overflow-hidden border border-[#8B4513]">
-                                            <img
-                                                src={game.icon}
-                                                alt={game.name}
-                                                className="w-full h-auto object-cover"
-                                            />
+                                    {isRevealed ? (
+                                        <div className="bg-linear-to-br from-[#f5e6d3] to-[#e8d5b7] border-2 border-[#654321] rounded-lg p-2 shadow-xl">
+                                            <h3 className="font-serif text-[10px] font-bold text-[#3d2817] mb-0.5 pb-0.5 border-b border-[#8B4513] uppercase">
+                                                {game.name}
+                                            </h3>
+                                            <p className="font-serif text-[9px] leading-snug text-[#4a3728]">
+                                                {game.description}
+                                            </p>
+                                            <div className="mt-1.5 rounded-md overflow-hidden border border-[#8B4513]">
+                                                <img
+                                                    src={game.icon}
+                                                    alt={game.name}
+                                                    className="w-full h-auto object-cover"
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
+                                    ) : (
+                                        <div className="bg-linear-to-br from-[#3b2716] to-[#2a1a0e] border-2 border-[#654321] rounded-lg p-2 shadow-xl text-center">
+                                            <div className="text-3xl mb-1">🏴‍☠️</div>
+                                            <h3 className="font-serif text-[10px] font-bold text-[#d4af37] mb-0.5 pb-0.5 border-b border-[#8B4513] uppercase">
+                                                Challenge #{game.id}
+                                            </h3>
+                                            <p className="font-serif text-[9px] leading-snug text-[#c19a6b] italic">
+                                                This challenge is locked! Stay tuned for the big reveal...
+                                            </p>
+                                            <div className="mt-1.5 py-1 px-1.5 bg-[rgba(139,69,19,0.3)] rounded-md border border-[#654321]">
+                                                <span className="font-serif text-[9px] font-bold text-[#d4af37] uppercase tracking-wider">
+                                                    🔓 Unlocking Soon
+                                                </span>
+                                            </div>
+                                        </div>
+                                    )}
                                 </motion.div>
                             )}
                         </motion.div>
